@@ -1,0 +1,165 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nayeem Mohammad
+Phone-Alt +1 (803) 404 8432 | Envelope nayeem@email.sc.edu | Github GitHub | LINK Website | LINKEDIN LinkedIn
+
+Map-marker-alt 215 Spencer Pl, Cayce, Columbia, SC 29033
+
+RESEARCH INTEREST
+• Computer Vision, Neuroimaging, Natural Language Processing, and Deep Learning
+
+EDUCATION
+
+University of South Carolina August 2022 – Present
+Doctoral of Philosophy in Computer Science
+Coursework: Data Mining, Reinforcement Learning, Analysis of Algorithms, Compiler Construction, and Neurosymbolic AI
+
+North South University January 2016 – May 2020
+Bachelor of Science in Computer Science and Engineering CGPA:3.58/4.0
+
+• Cum Laude in Computer Science and Engineering
+• Coursework: Pattern Recognition, Machine Learning, Data Communication and Network, Design and Analysis of
+
+Algorithms, Database Management System, Computer Organization and Architecture, Data Structures and
+Algorithms
+
+Notre Dame College July 2012 – May 2014
+GPA:5.0/5.0
+
+PROFESSIONAL EXPERIENCE
+
+Graduate Research Assistant August 2023 – Present
+
+• Artificial Intelligence Institute of South Carolina (AIISC)
+Supervised by Dr. Amit Sheth; Founding Director of AI Institute of UofSC
+
+Cabinet Secretary of Professional Development August 2023 – Present
+
+• Graduate Student Association
+
+Graduate Teaching Assistant August 2022 – Present
+
+PROGRAMMING EXPERIENCE
+
+CODEFORCES
+Handle : Initiated
+
+• Solved 275 problems; participated in 46 online contests in codeforces
+
+LightOJ
+Handle : initiated
+
+• Solved 64 problems from one of the most tough online judges
+
+https://github.com/Initiated0
+https://initiated0.github.io/
+https://www.linkedin.com/in/nayeem-mohammad-116a481a6/
+https://aiisc.ai/
+http://amit.aiisc.ai/
+https://sc.edu/about/offices_and_divisions/leadership_and_service_center/student_organizations/graduate_student_association/index.php
+https://codeforces.com/
+https://codeforces.com/profile/Initiated
+https://lightoj.com
+https://lightoj.com/user/initiated
+
+
+PROJECTS
+
+Sign-Language-App
+• Developed a WebApp using Computer Vision to detect hand signs that takes real-time video inputs
+• Used Deep Learning Models (VGG16 and MobileNet) to recognize the letters associated with the signs
+• Optimized MobileNet using loss functions, optimizers, and activation functions
+• Designed the WebApp using Flask; Integrated the Deep Learning model and Google API (text-to-speech)
+• Used Technology: Python, OpenCV, Deep Learning, Google API, Colab, Flask, HTML, CSS Github GitHub
+
+Simple Neural Network
+• Developed a C++ implementation of a simple Neural Network that takes functions, input values (x), weights, and
+
+biases as inputs
+• Uses the Shunting-yard algorithm to parse the input function, dynamic programming solution for the differential
+
+equation and calculates the prediction value (y)
+• Identical version of the C++ implementation in GOLang
+• Used Technology: C++, GO Github GitHub;
+
+BlogApp
+• Built a blog using Django and HTML/CSS
+• Connected SQLite Database with the blog
+• Built CRUD operations and federated login system
+• Used Technology: Python, HTML, CSS Github GitHub
+
+Siamese Network
+• Implemented Siamese network to perform a person re-identification using One-Shot Learning
+• Added a layer of Normalized Cross-correlation to improve the performance
+• Optimized and Significantly improved results in terms of time complexity
+• Used Technology: Deep Learning, OpenCV, Image Processing, TensorFlow, Python Github GitHub
+
+Web Scraper
+• Designed a web crawler that can scrape texts from websites using HTML parsing on source code
+• Can extract images and HTML div(s) from websites
+• A Flask app is wrapped around the crawler with a scraping option that takes links as inputs
+• Used Technology: Scrapy, BeautifulSoup4, Flask, Python Github GitHub
+
+SKILLS
+Machine Learning : Linear/Logistic Regression, Decision Tree, SVM, Naive Bayes, KNN, K-Means, Random forest, Deep
+Learning (CNN, RNN, R-CNN, VGG16, MobileNet, YOLO, Siamese Network, etc.)
+Languages : C/C++, Python, GOLang, PHP, Java
+Frameworks : Django, Flask, Laravel
+Libraries : TensorFlow, PyTorch, OpenCV, Numpy, Pandas, Scikit-learn, etc.
+Platforms : Kaggle, Colab, GCP, AWS
+Databases : MongoDB, MySQL, SQlite, PostgreSQL
+Scripting : LATEX, HTML, CSS, Bash
+Version Control : GitHub, Bitbucket, Jira
+
+AWARDS
+Academic Waiver : Recipient of a merit-based waiver of 25% from Summer 2017 semester till graduation
+
+https://github.com/Initiated0/Sign-Language-App
+https://github.com/Initiated0/SimpleNeuralNetwork
+https://github.com/Initiated0/BlogApp
+ https://github.com/Initiated0/SiameseNetworkWithNCCForOneShotLearning
+https://github.com/Initiated0/FCrawlBot
+
+	RESEARCH INTEREST
+	EDUCATION
+	PROFESSIONAL EXPERIENCE
+	PROGRAMMING EXPERIENCE
+	PROJECTS
+	SKILLS
+	AWARDS
+
