@@ -1,0 +1,14 @@
+digraph scalarflow {
+rankdir="LR"
+x [label="x "]
+y [label="y "]
+Pow_3 [label="Pow_3 "]
+Pow_4 [label="Pow_4 "]
+Add_1 [label="Add_1 "]
+Pow_5 [label="Pow_5 "]
+   x -> Pow_3
+   y -> Pow_4
+   Pow_3 -> Add_1
+   Pow_4 -> Add_1
+   Add_1 -> Pow_5
+}
