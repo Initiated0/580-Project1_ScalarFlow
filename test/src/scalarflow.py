@@ -418,12 +418,14 @@ class Variable(Node):
             name: Variable name
         """
         super().__init__(name)
+        self._value = value
 
     def assign(self, value):
         """ Assign a new value to this variable
 
         """
         # UNFINISHED!
+        self._value = value
         pass
 
 
@@ -459,6 +461,8 @@ class Add(BinaryOp):
     def __init__(self, operand1, operand2, name=""):
         super().__init__(operand1, operand2, name)
 
+        self._value = operand1._value + operand2._value
+        
 
 class Subtract(BinaryOp):
     """ Subtraction.  Node representing operand1 - operand2. """
@@ -466,6 +470,8 @@ class Subtract(BinaryOp):
 
     def __init__(self, operand1, operand2, name=""):
         super().__init__(operand1, operand2, name)
+
+        self._value = operand1._value - operand2._value
 
 
 class Multiply(BinaryOp):
@@ -475,6 +481,8 @@ class Multiply(BinaryOp):
     def __init__(self, operand1, operand2, name=""):
         super().__init__(operand1, operand2, name)
 
+        self._value = operand1._value * operand2._value
+
 
 class Divide(BinaryOp):
     """ Division.  Node representing operand1 / operand2.  """
@@ -482,6 +490,8 @@ class Divide(BinaryOp):
 
     def __init__(self, operand1, operand2, name=""):
         super().__init__(operand1, operand2, name)
+
+        self._value = operand1._value / operand2._value
 
 
 # UNARY OPERATORS --------------------
@@ -500,6 +510,8 @@ class Pow(UnaryOp):
         """
 
         super().__init__(operand, name)
+
+        self._value = operand._value ** power._value
 
 
 class Exp(UnaryOp):
