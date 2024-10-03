@@ -301,9 +301,36 @@ class Graph:
 
         """
 
-    # UNFINISHED!!
-    pass
+        if feed_dict is not None:
+            for placeholder_name, value in feed_dict.items():
+                placeholder_node = self.nodes_by_name.get(placeholder_name)
 
+                if isinstance(placeholder_node, Placeholder):
+                    placeholder_node._value = value
+                else:
+                    raise ValueError("Invalid placeholder name: {}".format(placeholder_name))
+        
+        ancestors = self._ancestor_list(node)
+
+        for ancestor in ancestors + [node]:
+            ancestor.compute_value()
+
+        result = node.value
+
+        if compute_derivatives:
+            # zeroing out all the derivatives
+            for ancestor in ancestors + [node]:
+                ancestor._derivative = 0.0
+
+            # setting the final node's derivatie to 1.0
+            node._derivative = 1.0
+
+            for ancestor in reversed(ancestors + [node]):
+                ancestor.compute_derivative()
+
+        # print('r: ', result)
+
+        return result
 
 # Construct a default computation graph.
 _GRAPH = Graph()
@@ -350,19 +377,25 @@ class Node:
             self.__class__._COUNT += 1
 
         self.name = name
+        self._value = None
+        self._derivative = 0.0
         _GRAPH._add_node(self)
 
     @property
     def value(self):
         """ Value should be read-only (except for variable nodes). """
-        # UNFINISHED!!
-        return None
+        return self._value
 
     @property
     def derivative(self):
         """ derivative should be read-only. """
-        # UNFINISHED!!
-        return None
+        return self._derivative
+    
+    def compute_value(self):
+        pass
+
+    def compute_derivative(self):
+        pass
 
     def __repr__(self):
         """ Default string representation is the Node's name. """
@@ -425,7 +458,14 @@ class Variable(Node):
 
         """
         # UNFINISHED!
+        # newly added
         self._value = value
+
+    def compute_value(self):
+        """ No computation needed for a variable, it's already set. """
+        pass
+    
+    def compute_derivative(self):
         pass
 
 
@@ -437,6 +477,14 @@ class Constant(Node):
     def __init__(self, value, name=""):
         super().__init__(name)
         self._value = value
+
+    def compute_value(self):
+        """ No computation needed for a constant, it's already set. """
+        pass
+
+    def compute_derivative(self):
+        """ No derivatives needed for a constant. """
+        pass
 
     def __repr__(self):
         return self.name + ": " + str(self._value)
@@ -450,6 +498,10 @@ class Placeholder(Node):
 
     def __init__(self, name=""):
         super().__init__(name)
+    
+    def compute_value(self):
+        if self._value is None:
+            raise ValueError("Placeholder value not set")
 
 
 # BINARY OPERATORS ---------------------
@@ -460,9 +512,14 @@ class Add(BinaryOp):
 
     def __init__(self, operand1, operand2, name=""):
         super().__init__(operand1, operand2, name)
+    
+    def compute_value(self):
+        self._value = self.operand1.value + self.operand2.value
 
-        self._value = operand1._value + operand2._value
-        
+    def compute_derivative(self):
+        self.operand1._derivative += self._derivative
+        self.operand2._derivative += self._derivative
+
 
 class Subtract(BinaryOp):
     """ Subtraction.  Node representing operand1 - operand2. """
@@ -470,8 +527,14 @@ class Subtract(BinaryOp):
 
     def __init__(self, operand1, operand2, name=""):
         super().__init__(operand1, operand2, name)
+        
+    # newly added
+    def compute_value(self):
+        self._value = self.operand1.value - self.operand2.value
 
-        self._value = operand1._value - operand2._value
+    def compute_derivative(self):
+        self.operand1._derivative += self._derivative
+        self.operand2._derivative += -self._derivative
 
 
 class Multiply(BinaryOp):
@@ -481,7 +544,13 @@ class Multiply(BinaryOp):
     def __init__(self, operand1, operand2, name=""):
         super().__init__(operand1, operand2, name)
 
-        self._value = operand1._value * operand2._value
+    # newly added
+    def compute_value(self):
+        self._value = self.operand1.value * self.operand2.value
+
+    def compute_derivative(self):
+        self.operand1._derivative += self.operand2.value * self._derivative
+        self.operand2._derivative += self.operand1.value * self._derivative
 
 
 class Divide(BinaryOp):
@@ -490,8 +559,17 @@ class Divide(BinaryOp):
 
     def __init__(self, operand1, operand2, name=""):
         super().__init__(operand1, operand2, name)
+    
+    # newly added
+    def compute_value(self):
+        if self.operand2.value == 0:
+            raise ZeroDivisionError("Division by zero")
+        self._value = self.operand1.value / self.operand2.value
 
-        self._value = operand1._value / operand2._value
+    def compute_derivative(self):
+        self.operand1._derivative += (1 / self.operand2.value) * self._derivative
+        self.operand2._derivative += -(self.operand1.value / (self.operand2.value ** 2)) * self._derivative
+
 
 
 # UNARY OPERATORS --------------------
@@ -510,8 +588,20 @@ class Pow(UnaryOp):
         """
 
         super().__init__(operand, name)
+        
+        # Ensure power is a node; if it's a scalar, wrap it as a Constant node
+        if isinstance(power, Node):
+            self.power = power
+        else:
+            self.power = Constant(power)
 
-        self._value = operand._value ** power._value
+
+    
+    def compute_value(self):
+        self._value = self.operand.value ** self.power.value
+
+    def compute_derivative(self):
+        self.operand._derivative += self.power.value * (self.operand.value ** (self.power.value - 1)) * self._derivative
 
 
 class Exp(UnaryOp):
@@ -522,6 +612,12 @@ class Exp(UnaryOp):
     def __init__(self, operand, name=""):
         super().__init__(operand, name)
 
+    def compute_value(self):
+        self._value = math.exp(self.operand.value)
+
+    def compute_derivative(self):
+        self.operand._derivative += math.exp(self.operand.value) * self._derivative
+
 
 class Log(UnaryOp):
     """ Log base e. """
@@ -529,6 +625,16 @@ class Log(UnaryOp):
 
     def __init__(self, operand, name=""):
         super().__init__(operand, name)
+    
+    def compute_value(self):
+        self._value = math.log(self.operand.value)
+    
+    def compute_derivative(self):
+        # Derivative of log(x) is 1 / x
+        if self.operand.value != 0:
+            self.operand._derivative += (1 / self.operand.value) * self._derivative
+        else:
+            raise ValueError("Derivative of log at x = 0 is undefined")
 
 
 class Abs(UnaryOp):
@@ -537,6 +643,18 @@ class Abs(UnaryOp):
 
     def __init__(self, operand, name=""):
         super().__init__(operand, name)
+    
+    def compute_value(self):
+        self._value = abs(self.operand.value)
+
+    def compute_derivative(self):
+        # Derivative of |x| is 1 if x > 0, -1 if x < 0, 0 if x == 0
+        if self.operand.value > 0:
+            self.operand._derivative += 1 * self._derivative
+        elif self.operand.value < 0:
+            self.operand._derivative += -1 * self._derivative
+        else:
+            self.operand._derivative += 0
 
 
 def main():

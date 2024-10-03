@@ -1,0 +1,58 @@
+digraph scalarflow {
+rankdir="LR"
+b [label="b \nvalue:  0.1\ngrad: 0"]
+w_0 [label="w_0 \nvalue:  0.1\ngrad: 0"]
+x_0 [label="x_0 \ngrad: 0"]
+Multiply_0 [label="Multiply_0 \ngrad: 0"]
+w_1 [label="w_1 \nvalue:  0.1\ngrad: 0"]
+x_1 [label="x_1 \ngrad: 0"]
+Multiply_1 [label="Multiply_1 \ngrad: 0"]
+Add_0 [label="Add_0 \ngrad: 0"]
+Add_1 [label="Add_1 \ngrad: 0"]
+Constant_0 [label="Constant_0: 1.0 \nvalue:  1\ngrad: 0"]
+Constant_1 [label="Constant_1: -1.0 \nvalue:  -1\ngrad: 0"]
+Multiply_2 [label="Multiply_2 \ngrad: 0"]
+Exp_0 [label="Exp_0 \ngrad: 0"]
+Add_2 [label="Add_2 \ngrad: 0"]
+Divide_0 [label="Divide_0 \ngrad: 0"]
+y [label="y \ngrad: 0"]
+Constant_2 [label="Constant_2: 1.0 \nvalue:  1\ngrad: 0"]
+Log_0 [label="Log_0 \ngrad: 0"]
+Multiply_3 [label="Multiply_3 \ngrad: 0"]
+Subtract_0 [label="Subtract_0 \ngrad: 0"]
+Subtract_1 [label="Subtract_1 \ngrad: 0"]
+Log_1 [label="Log_1 \ngrad: 0"]
+Multiply_4 [label="Multiply_4 \ngrad: 0"]
+Add_3 [label="Add_3 \ngrad: 0"]
+Constant_3 [label="Constant_3: -1.0 \nvalue:  -1\ngrad: 0"]
+Multiply_5 [label="Multiply_5 \ngrad: 0"]
+   b -> Add_0
+   w_0 -> Multiply_0
+   x_0 -> Multiply_0
+   Multiply_0 -> Add_0
+   w_1 -> Multiply_1
+   x_1 -> Multiply_1
+   Multiply_1 -> Add_1
+   Add_0 -> Add_1
+   Add_1 -> Multiply_2
+   Constant_0 -> Add_2
+   Constant_0 -> Divide_0
+   Constant_1 -> Multiply_2
+   Multiply_2 -> Exp_0
+   Exp_0 -> Add_2
+   Add_2 -> Divide_0
+   Divide_0 -> Log_0
+   Divide_0 -> Subtract_1
+   y -> Multiply_3
+   y -> Subtract_0
+   Constant_2 -> Subtract_0
+   Constant_2 -> Subtract_1
+   Log_0 -> Multiply_3
+   Multiply_3 -> Add_3
+   Subtract_0 -> Multiply_4
+   Subtract_1 -> Log_1
+   Log_1 -> Multiply_4
+   Multiply_4 -> Add_3
+   Add_3 -> Multiply_5
+   Constant_3 -> Multiply_5
+}
