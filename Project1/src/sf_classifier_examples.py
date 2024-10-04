@@ -21,7 +21,11 @@ def two_clusters(num_points, noise=.3, show=False):
     if show:
         import matplotlib.pyplot as plt
         plt.plot(features[labels == 1, 0], features[labels == 1, 1], 's')
+        plt.title("Two Clusters Testing Data")
+        plt.xlabel("Feature 1")
+        plt.ylabel("Feature 2")
         plt.plot(features[labels == 0, 0], features[labels == 0, 1], 'o')
+        plt.savefig("two_clusters TestingData.png")
         plt.show()
 
     return features, labels

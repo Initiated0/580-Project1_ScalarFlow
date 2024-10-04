@@ -123,7 +123,10 @@ class AbstractSFClassifier(abc.ABC):
             plt.scatter(features[labels == label, 0],
                         features[labels == label, 1],
                         marker=markers[int(label)])
-
+        plt.title("Prediction")
+        plt.xlabel("Feature 1")
+        plt.ylabel("Feature 2")
+        plt.savefig('two_clusters Prediction.png')
         plt.show()
 
 
