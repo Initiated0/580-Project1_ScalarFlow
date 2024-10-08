@@ -70,7 +70,7 @@ def logistic_regression_clusters(lr=.05, epochs=100):
     classifier.plot_2d_predictions(dataset_train_x, dataset_train_y)
 
 
-def mlp_xor(lr=.05, epochs=100, activation='sigmoid'):
+def mlp_xor(lr=.05, epochs=500, activation='sigmoid'):
     dataset_train_x, dataset_train_y = noisy_xor(500)
     dataset_test_x, dataset_test_y = noisy_xor(500)
 
