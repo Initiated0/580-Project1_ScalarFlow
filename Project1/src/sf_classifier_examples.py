@@ -31,7 +31,7 @@ def two_clusters(num_points, noise=.3, show=False):
     return features, labels
 
 
-def noisy_xor(num_points, show=False):
+def noisy_xor(num_points, show=True):
     """ Synthetic Dataset that is not linearly separable. """
 
     features = np.random.randint(2, size=(num_points, 2))
@@ -72,7 +72,7 @@ def logistic_regression_clusters(lr=.05, epochs=100):
 
 def mlp_xor(lr=.05, epochs=500, activation='sigmoid'):
     dataset_train_x, dataset_train_y = noisy_xor(500)
-    dataset_test_x, dataset_test_y = noisy_xor(500)
+    dataset_test_x, dataset_test_y = noisy_xor(500, show=True)
 
     classifier = sf_classifiers.MLP(2, [10], activation=activation)
 
@@ -84,5 +84,5 @@ def mlp_xor(lr=.05, epochs=500, activation='sigmoid'):
 
 
 if __name__ == "__main__":
-    # mlp_xor()
+    #mlp_xor()
     logistic_regression_clusters()
