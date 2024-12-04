@@ -1,0 +1,46 @@
+Model,Category,Metric,Value
+Logistic Regression,Negative,Precision,0.870205706
+Logistic Regression,Positive,Precision,0.87367716
+Logistic Regression,Accuracy,Precision,0.871933333
+DistilBERT (without fine-tuning),Negative,Precision,0.500871898
+DistilBERT (without fine-tuning),Positive,Precision,0.644444444
+DistilBERT (without fine-tuning),Accuracy,Precision,0.501733333
+DistilBERT (with fine-tuning),Negative,Precision,0.939344262
+DistilBERT (with fine-tuning),Positive,Precision,0.91875
+DistilBERT (with fine-tuning),Accuracy,Precision,0.9288
+DistilBERT (with fine-tuning),Negative,Precision,0.905863792
+DistilBERT (with fine-tuning),Positive,Precision,0.917500676
+DistilBERT (with fine-tuning),Accuracy,Precision,0.9116
+DistilBERT (with fine-tuning),Negative,Precision,0.8943068
+DistilBERT (with fine-tuning),Positive,Precision,0.903669725
+DistilBERT (with fine-tuning),Accuracy,Precision,0.898933333
+Logistic Regression,Negative,Recall ,0.874266666
+Logistic Regression,Positive,Recall ,0.8696
+Logistic Regression,Accuracy,Recall ,0.871933333
+DistilBERT (without fine-tuning),Negative,Recall ,0.995733333
+DistilBERT (without fine-tuning),Positive,Recall ,0.007733333
+DistilBERT (without fine-tuning),Accuracy,Recall ,0.501733333
+DistilBERT (with fine-tuning),Negative,Recall ,0.9168
+DistilBERT (with fine-tuning),Positive,Recall ,0.9408
+DistilBERT (with fine-tuning),Accuracy,Recall ,0.9288
+DistilBERT (with fine-tuning),Negative,Recall ,0.918666667
+DistilBERT (with fine-tuning),Positive,Recall ,0.904533333
+DistilBERT (with fine-tuning),Accuracy,Recall ,0.9116
+DistilBERT (with fine-tuning),Negative,Recall ,0.9048
+DistilBERT (with fine-tuning),Positive,Recall ,0.893066667
+DistilBERT (with fine-tuning),Accuracy,Recall ,0.898933333
+Logistic Regression,Negative,f1-score,0.872231459
+Logistic Regression,Positive,f1-score,0.871633812
+Logistic Regression,Accuracy,f1-score,0.871933333
+DistilBERT (without fine-tuning),Negative,f1-score,0.666488175
+DistilBERT (without fine-tuning),Positive,f1-score,0.015283267
+DistilBERT (without fine-tuning),Accuracy,f1-score,0.501733333
+DistilBERT (with fine-tuning),Negative,f1-score,0.927935223
+DistilBERT (with fine-tuning),Positive,f1-score,0.929644269
+DistilBERT (with fine-tuning),Accuracy,f1-score,0.9288
+DistilBERT (with fine-tuning),Negative,f1-score,0.91222031
+DistilBERT (with fine-tuning),Positive,f1-score,0.910970861
+DistilBERT (with fine-tuning),Accuracy,f1-score,0.9116
+DistilBERT (with fine-tuning),Negative,f1-score,0.8995228
+DistilBERT (with fine-tuning),Positive,f1-score,0.89833691
+DistilBERT (with fine-tuning),Accuracy,f1-score,0.898933333
