@@ -4,6 +4,8 @@ from transformers import DistilBertTokenizer, DistilBertForSequenceClassificatio
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import seaborn as sns
+from transformers import GPT2Tokenizer, GPT2ForSequenceClassification, AdamW
+
 import matplotlib.pyplot as plt
 import pandas as pd
 from tqdm import tqdm
@@ -69,9 +71,18 @@ class SentimentDataset(Dataset):
             'label': torch.tensor(label, dtype=torch.long)
         }
 
+# Load the fine-tuned model
+modelTuned = 'gpt2_finetuned10'
+model_path = f'{root}/{modelTuned}.pkl'
 
 # Tokenization
-tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+# tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+
+tokenizer = GPT2Tokenizer.from_pretrained(f'{root}/gpt2_finetuned_tokenizer10')
+tokenizer.pad_token = tokenizer.eos_token  # GPT-2 doesn't have a pad token; use EOS token as pad
+
+model = GPT2ForSequenceClassification.from_pretrained(f'{root}/{modelTuned}', from_flax=True, num_labels=2)
+
 
 
 # 1. Data Preparation: Train/Validation/Test Split
@@ -97,9 +108,7 @@ val_loader = DataLoader(val_dataset, batch_size=16)
 test_loader = DataLoader(test_dataset, batch_size=16)
 
 
-# Load the fine-tuned model
-modelTuned = 'distilbert_finetuned10'
-model_path = f'{root}/{modelTuned}.pkl'
+
 with open(model_path, 'rb') as f:
     model = pickle.load(f)
 
